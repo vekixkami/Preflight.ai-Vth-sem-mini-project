@@ -1,0 +1,31 @@
+# OS / editor noise
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# Node / dashboard
+node_modules/
+
+# Telemetry store — never commit customer data (see M1: Privacy Remediation)
+*.sqlite3
+*.sqlite3-journal
+*.db
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Regenerable ML artifact — rebuild with backend/models/train_classifier.py
+
+# Local tooling and scratch files
+.claude/
+backend/.claude/
+backup_before_fixes_*/
+Screenshot*.png

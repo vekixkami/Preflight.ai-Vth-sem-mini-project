@@ -1,0 +1,81 @@
+{
+  "manifest_version": 3,
+  "name": "Preflight.ai",
+  "version": "1.0.0",
+  "description": "Clearance before you send. Warns employees before sending sensitive company data to public AI tools.",
+  "permissions": [
+    "storage",
+    "alarms",
+    "downloads"
+  ],
+  "host_permissions": [
+    "https://chatgpt.com/*",
+    "https://chat.openai.com/*",
+    "https://claude.ai/*",
+    "https://gemini.google.com/*",
+    "https://bard.google.com/*",
+    "https://copilot.microsoft.com/*",
+    "https://www.bing.com/*",
+    "https://perplexity.ai/*",
+    "https://www.perplexity.ai/*",
+    "http://localhost:8000/*",
+    "http://127.0.0.1:8000/*"
+  ],
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chatgpt.com/*",
+        "https://chat.openai.com/*",
+        "https://claude.ai/*",
+        "https://gemini.google.com/*",
+        "https://bard.google.com/*",
+        "https://copilot.microsoft.com/*",
+        "https://www.bing.com/*",
+        "https://perplexity.ai/*",
+        "https://www.perplexity.ai/*"
+      ],
+      "js": [
+        "src/vendor/pdf.min.js",
+        "src/vendor/mammoth.browser.min.js",
+        "src/fileScanner.js",
+        "src/detectors.js",
+        "src/content.js"
+      ],
+      "css": [
+        "src/warning.css"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "src/vendor/pdf.worker.min.js"
+      ],
+      "matches": [
+        "https://chatgpt.com/*",
+        "https://chat.openai.com/*",
+        "https://claude.ai/*",
+        "https://gemini.google.com/*",
+        "https://bard.google.com/*",
+        "https://copilot.microsoft.com/*",
+        "https://www.bing.com/*",
+        "https://perplexity.ai/*",
+        "https://www.perplexity.ai/*"
+      ]
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "src/popup.html",
+    "default_icon": "icons/icon48.png"
+  },
+  "options_page": "src/options.html"
+}

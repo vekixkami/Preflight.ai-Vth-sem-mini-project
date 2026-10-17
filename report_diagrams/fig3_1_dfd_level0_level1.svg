@@ -1,0 +1,193 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1540" height="1230" viewBox="0 0 1540 1230">
+<defs>
+  <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+    <path d="M0 0 L10 5 L0 10 z" fill="#374151"/>
+  </marker>
+  <marker id="ah-start" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+    <path d="M0 0 L10 5 L0 10 z" fill="#374151"/>
+  </marker>
+</defs>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="30" y="36" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="bold" text-anchor="start" fill="#1f2937">LEVEL 0 — CONTEXT DIAGRAM</text>
+<circle cx="760" cy="215" r="105" fill="#dbe7f6" stroke="#5b7fb5" stroke-width="2"/>
+<text x="760" y="181" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="bold" text-anchor="middle" fill="#5b7fb5">0</text>
+<text x="760" y="209" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="bold" text-anchor="middle" fill="#1f2937">Preflight.ai</text>
+<text x="760" y="231" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="bold" text-anchor="middle" fill="#1f2937">DLP System</text>
+<text x="760" y="253" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#4b5563">(extension + backend)</text>
+<rect x="60" y="175" width="210" height="80" rx="2" fill="#eef1f5" stroke="#6b7280" stroke-width="1.6"/>
+<text x="165.0" y="211.5" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#1f2937">Employee</text>
+<text x="165.0" y="229.5" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="normal" text-anchor="middle" fill="#4b5563">(end user)</text>
+<rect x="1230" y="105" width="250" height="80" rx="2" fill="#eef1f5" stroke="#6b7280" stroke-width="1.6"/>
+<text x="1355.0" y="141.5" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#1f2937">AI Platform</text>
+<text x="1355.0" y="159.5" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="normal" text-anchor="middle" fill="#4b5563">ChatGPT · Claude · Gemini …</text>
+<rect x="1230" y="250" width="250" height="80" rx="2" fill="#eef1f5" stroke="#6b7280" stroke-width="1.6"/>
+<text x="1355.0" y="295.0" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#1f2937">IT / Compliance Admin</text>
+<path d="M20 375 H1520" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="8 6"/>
+<text x="30" y="410" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="bold" text-anchor="start" fill="#1f2937">LEVEL 1 — PROCESS DECOMPOSITION</text>
+<rect x="40" y="700" width="190" height="90" rx="2" fill="#eef1f5" stroke="#6b7280" stroke-width="1.6"/>
+<text x="135.0" y="750.0" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#1f2937">Employee</text>
+<rect x="40" y="880" width="190" height="90" rx="2" fill="#eef1f5" stroke="#6b7280" stroke-width="1.6"/>
+<text x="135.0" y="930.0" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#1f2937">AI Platform</text>
+<rect x="920" y="1075" width="200" height="90" rx="2" fill="#eef1f5" stroke="#6b7280" stroke-width="1.6"/>
+<text x="1020.0" y="1116.5" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#1f2937">IT / Compliance</text>
+<text x="1020.0" y="1134.5" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="normal" text-anchor="middle" fill="#4b5563">Admin</text>
+<rect x="300" y="470" width="210" height="120" rx="12" fill="#dbe7f6" stroke="#5b7fb5" stroke-width="1.6"/>
+<path d="M300 496 H510" stroke="#5b7fb5" stroke-width="1.2"/>
+<text x="405.0" y="488" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#5b7fb5">1.0</text>
+<text x="405.0" y="532.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="bold" text-anchor="middle" fill="#1f2937">Capture Input</text>
+<text x="405.0" y="548.0" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#4b5563">intercept send (sync),</text>
+<text x="405.0" y="564.0" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#4b5563">queue attachments</text>
+<rect x="610" y="470" width="210" height="120" rx="12" fill="#dbe7f6" stroke="#5b7fb5" stroke-width="1.6"/>
+<path d="M610 496 H820" stroke="#5b7fb5" stroke-width="1.2"/>
+<text x="715.0" y="488" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#5b7fb5">2.0</text>
+<text x="715.0" y="532.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="bold" text-anchor="middle" fill="#1f2937">Build Scan Text</text>
+<text x="715.0" y="548.0" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#4b5563">extract PDF / DOCX / TXT</text>
+<text x="715.0" y="564.0" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#4b5563">+ prompt text</text>
+<rect x="920" y="470" width="210" height="120" rx="12" fill="#dbe7f6" stroke="#5b7fb5" stroke-width="1.6"/>
+<path d="M920 496 H1130" stroke="#5b7fb5" stroke-width="1.2"/>
+<text x="1025.0" y="488" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#5b7fb5">3.0</text>
+<text x="1025.0" y="532.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="bold" text-anchor="middle" fill="#1f2937">Layer 1 Rule Scan</text>
+<text x="1025.0" y="548.0" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#4b5563">regex, checksums,</text>
+<text x="1025.0" y="564.0" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#4b5563">company keywords</text>
+<rect x="920" y="690" width="210" height="120" rx="12" fill="#dbe7f6" stroke="#5b7fb5" stroke-width="1.6"/>
+<path d="M920 716 H1130" stroke="#5b7fb5" stroke-width="1.2"/>
+<text x="1025.0" y="708" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#5b7fb5">4.0</text>
+<text x="1025.0" y="752.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="bold" text-anchor="middle" fill="#1f2937">Layer 2 ML Classify</text>
+<text x="1025.0" y="768.0" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#4b5563">type, confidence, risk</text>
+<text x="1025.0" y="784.0" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#4b5563">(fail-open if unavailable)</text>
+<rect x="610" y="690" width="210" height="120" rx="12" fill="#dbe7f6" stroke="#5b7fb5" stroke-width="1.6"/>
+<path d="M610 716 H820" stroke="#5b7fb5" stroke-width="1.2"/>
+<text x="715.0" y="708" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#5b7fb5">5.0</text>
+<text x="715.0" y="752.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="bold" text-anchor="middle" fill="#1f2937">Warn &amp; Resolve</text>
+<text x="715.0" y="768.0" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#4b5563">overlay; replace /</text>
+<text x="715.0" y="784.0" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#4b5563">send anyway / cancel</text>
+<rect x="920" y="870" width="210" height="120" rx="12" fill="#dbe7f6" stroke="#5b7fb5" stroke-width="1.6"/>
+<path d="M920 896 H1130" stroke="#5b7fb5" stroke-width="1.2"/>
+<text x="1025.0" y="888" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#5b7fb5">6.0</text>
+<text x="1025.0" y="932.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="bold" text-anchor="middle" fill="#1f2937">Log Telemetry</text>
+<text x="1025.0" y="948.0" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#4b5563">metadata only,</text>
+<text x="1025.0" y="964.0" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#4b5563">offline retry queue</text>
+<rect x="1250" y="1060" width="210" height="120" rx="12" fill="#dbe7f6" stroke="#5b7fb5" stroke-width="1.6"/>
+<path d="M1250 1086 H1460" stroke="#5b7fb5" stroke-width="1.2"/>
+<text x="1355.0" y="1078" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#5b7fb5">7.0</text>
+<text x="1355.0" y="1122.0" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="bold" text-anchor="middle" fill="#1f2937">Dashboard &amp; Reports</text>
+<text x="1355.0" y="1138.0" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#4b5563">aggregate, filter,</text>
+<text x="1355.0" y="1154.0" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#4b5563">export CSV / JSON</text>
+<path d="M1500 505 H1250 V555 H1500" fill="#fdf3dc" stroke="#b7862b" stroke-width="1.6"/>
+<rect x="1250" y="505" width="250" height="50" fill="#fdf3dc" stroke="none"/>
+<path d="M1500 505 H1250 V555 H1500" fill="none" stroke="#b7862b" stroke-width="1.6"/>
+<path d="M1294 505 V555" stroke="#b7862b" stroke-width="1.4"/>
+<text x="1272" y="535.0" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">D1</text>
+<text x="1397.0" y="535.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="normal" text-anchor="middle" fill="#1f2937">Company Keywords</text>
+<path d="M1500 725 H1250 V775 H1500" fill="#fdf3dc" stroke="#b7862b" stroke-width="1.6"/>
+<rect x="1250" y="725" width="250" height="50" fill="#fdf3dc" stroke="none"/>
+<path d="M1500 725 H1250 V775 H1500" fill="none" stroke="#b7862b" stroke-width="1.6"/>
+<path d="M1294 725 V775" stroke="#b7862b" stroke-width="1.4"/>
+<text x="1272" y="755.0" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">D4</text>
+<text x="1397.0" y="755.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="normal" text-anchor="middle" fill="#1f2937">Classifier Model</text>
+<path d="M1500 865 H1250 V911 H1500" fill="#fdf3dc" stroke="#b7862b" stroke-width="1.6"/>
+<rect x="1250" y="865" width="250" height="46" fill="#fdf3dc" stroke="none"/>
+<path d="M1500 865 H1250 V911 H1500" fill="none" stroke="#b7862b" stroke-width="1.6"/>
+<path d="M1294 865 V911" stroke="#b7862b" stroke-width="1.4"/>
+<text x="1272" y="893.0" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">D2</text>
+<text x="1397.0" y="893.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="normal" text-anchor="middle" fill="#1f2937">Local Event Cache</text>
+<path d="M1500 945 H1250 V991 H1500" fill="#fdf3dc" stroke="#b7862b" stroke-width="1.6"/>
+<rect x="1250" y="945" width="250" height="46" fill="#fdf3dc" stroke="none"/>
+<path d="M1500 945 H1250 V991 H1500" fill="none" stroke="#b7862b" stroke-width="1.6"/>
+<path d="M1294 945 V991" stroke="#b7862b" stroke-width="1.4"/>
+<text x="1272" y="973.0" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">D3</text>
+<text x="1397.0" y="973.0" font-family="Helvetica, Arial, sans-serif" font-size="12.5" font-weight="normal" text-anchor="middle" fill="#1f2937">Scan Events DB</text>
+<text x="40" y="1080" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="start" fill="#1f2937">Notation</text>
+<rect x="40" y="1094" width="56" height="30" rx="2" fill="#eef1f5" stroke="#6b7280" stroke-width="1.4"/>
+<text x="106" y="1114" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="normal" text-anchor="start" fill="#1f2937">External entity</text>
+<rect x="230" y="1094" width="56" height="30" rx="8" fill="#dbe7f6" stroke="#5b7fb5" stroke-width="1.4"/>
+<text x="296" y="1114" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="normal" text-anchor="start" fill="#1f2937">Process</text>
+<path d="M96 1140 H40 V1170 H96" fill="#fdf3dc" stroke="#b7862b" stroke-width="1.4"/>
+<text x="106" y="1160" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="normal" text-anchor="start" fill="#1f2937">Data store</text>
+<path d="M230 1155 H280" stroke="#374151" stroke-width="1.6" marker-end="url(#ah)"/>
+<text x="296" y="1160" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="normal" text-anchor="start" fill="#1f2937">Data flow</text>
+<path d="M270 195 H656.9" fill="none" stroke="#374151" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M656.9 235 H270" fill="none" stroke="#374151" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M821.6 130 H1230" fill="none" stroke="#374151" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M1230 165 H852.3" fill="none" stroke="#374151" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M849.4 270 H1230" fill="none" stroke="#374151" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M1230 305 H814.1" fill="none" stroke="#374151" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M135 700 V530 H300" fill="none" stroke="#374151" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M510 530 H610" fill="none" stroke="#374151" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M820 530 H920" fill="none" stroke="#374151" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M1250 530 H1130" fill="none" stroke="#374151" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M1080 590 V690" fill="none" stroke="#374151" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M970 590 V640 H715 V690" fill="none" stroke="#374151" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M1250 750 H1130" fill="none" stroke="#374151" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M920 750 H820" fill="none" stroke="#374151" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M610 725 H230" fill="none" stroke="#374151" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M230 765 H610" fill="none" stroke="#374151" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M660 810 V925 H230" fill="none" stroke="#374151" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M770 810 V925 H920" fill="none" stroke="#374151" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M135 970 V1020 H1025 V990" fill="none" stroke="#374151" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M1130 888 H1250" fill="none" stroke="#374151" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M1130 968 H1250" fill="none" stroke="#374151" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M1355 991 V1060" fill="none" stroke="#374151" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M1500 888 H1525 V1120 H1460" fill="none" stroke="#374151" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M1250 1100 H1120" fill="none" stroke="#374151" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M1120 1140 H1250" fill="none" stroke="#374151" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="327.6" y="175.5" width="268.8" height="18.5" fill="#ffffff" fill-opacity="0.92"/>
+<text x="462" y="188.0" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#1f2937">prompt, attachments, send action, decision</text>
+<rect x="305.9" y="241.5" width="312.3" height="18.5" fill="#ffffff" fill-opacity="0.92"/>
+<text x="462" y="254.0" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#1f2937">warning (findings, risk level), safe-data rewrite</text>
+<rect x="947.2" y="110.5" width="175.7" height="18.5" fill="#ffffff" fill-opacity="0.92"/>
+<text x="1035" y="123.0" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#1f2937">approved / sanitized prompt</text>
+<rect x="916.1" y="145.5" width="237.8" height="18.5" fill="#ffffff" fill-opacity="0.92"/>
+<text x="1035" y="158.0" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#1f2937">rendered response (send confirmation)</text>
+<rect x="916.1" y="250.5" width="237.8" height="18.5" fill="#ffffff" fill-opacity="0.92"/>
+<text x="1035" y="263.0" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#1f2937">dashboard metrics, CSV / JSON reports</text>
+<rect x="956.5" y="285.5" width="157.0" height="18.5" fill="#ffffff" fill-opacity="0.92"/>
+<text x="1035" y="298.0" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#1f2937">filters, export requests</text>
+<rect x="139.0" y="607.5" width="132.2" height="33.0" fill="#ffffff" fill-opacity="0.92"/>
+<text x="143" y="620.0" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="normal" text-anchor="start" fill="#1f2937">prompt, attachments,</text>
+<text x="143" y="634.5" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="normal" text-anchor="start" fill="#1f2937">send click / Enter</text>
+<rect x="531.2" y="487.5" width="57.7" height="33.0" fill="#ffffff" fill-opacity="0.92"/>
+<text x="560" y="500.0" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#1f2937">prompt +</text>
+<text x="560" y="514.5" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#1f2937">files</text>
+<rect x="838.1" y="487.5" width="63.9" height="33.0" fill="#ffffff" fill-opacity="0.92"/>
+<text x="870" y="500.0" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#1f2937">combined</text>
+<text x="870" y="514.5" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#1f2937">scan text</text>
+<rect x="1161.2" y="502.5" width="57.7" height="18.5" fill="#ffffff" fill-opacity="0.92"/>
+<text x="1190" y="515.0" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#1f2937">keywords</text>
+<rect x="1084.0" y="632.5" width="88.7" height="33.0" fill="#ffffff" fill-opacity="0.92"/>
+<text x="1088" y="645.0" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="normal" text-anchor="start" fill="#1f2937">clean text</text>
+<text x="1088" y="659.5" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="normal" text-anchor="start" fill="#1f2937">(no findings)</text>
+<rect x="763.5" y="619.5" width="157.0" height="18.5" fill="#ffffff" fill-opacity="0.92"/>
+<text x="842" y="632.0" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#1f2937">L1 findings (type, risk)</text>
+<rect x="1164.3" y="709.5" width="51.5" height="33.0" fill="#ffffff" fill-opacity="0.92"/>
+<text x="1190" y="722.0" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#1f2937">trained</text>
+<text x="1190" y="736.5" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#1f2937">model</text>
+<rect x="828.7" y="709.5" width="82.5" height="33.0" fill="#ffffff" fill-opacity="0.92"/>
+<text x="870" y="722.0" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#1f2937">L2 verdict</text>
+<text x="870" y="736.5" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#1f2937">(risk, type)</text>
+<rect x="304.2" y="705.5" width="231.6" height="18.5" fill="#ffffff" fill-opacity="0.92"/>
+<text x="420" y="718.0" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#1f2937">warning + details, safe-data rewrite</text>
+<rect x="291.8" y="745.5" width="256.4" height="18.5" fill="#ffffff" fill-opacity="0.92"/>
+<text x="420" y="758.0" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#1f2937">decision: replace / send anyway / cancel</text>
+<rect x="357.2" y="905.5" width="175.7" height="18.5" fill="#ffffff" fill-opacity="0.92"/>
+<text x="445" y="918.0" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#1f2937">approved / sanitized prompt</text>
+<rect x="774.0" y="848.5" width="144.1" height="44.5" fill="#ffffff" fill-opacity="0.92"/>
+<text x="778" y="860.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="normal" text-anchor="start" fill="#1f2937">decision event (action,</text>
+<text x="778" y="873.5" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="normal" text-anchor="start" fill="#1f2937">finding types, severity;</text>
+<text x="778" y="887.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="normal" text-anchor="start" fill="#1f2937">no raw text)</text>
+<rect x="445.6" y="1000.5" width="268.8" height="18.5" fill="#ffffff" fill-opacity="0.92"/>
+<text x="580" y="1013.0" font-family="Helvetica, Arial, sans-serif" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#1f2937">rendered response (post-send confirmation)</text>
+<rect x="1152.0" y="868.5" width="76.0" height="17.5" fill="#ffffff" fill-opacity="0.92"/>
+<text x="1190" y="880.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="normal" text-anchor="middle" fill="#1f2937">event record</text>
+<rect x="1160.5" y="948.5" width="59.0" height="17.5" fill="#ffffff" fill-opacity="0.92"/>
+<text x="1190" y="960.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="normal" text-anchor="middle" fill="#1f2937">HTTP POST</text>
+<rect x="1359.0" y="1018.5" width="36.4" height="17.5" fill="#ffffff" fill-opacity="0.92"/>
+<text x="1363" y="1030.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="normal" text-anchor="start" fill="#1f2937">query</text>
+<rect x="1480.0" y="1008.5" width="42.0" height="31.0" fill="#ffffff" fill-opacity="0.92"/>
+<text x="1518" y="1020.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="normal" text-anchor="end" fill="#1f2937">local</text>
+<text x="1518" y="1033.5" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="normal" text-anchor="end" fill="#1f2937">events</text>
+<rect x="1135.6" y="1080.5" width="98.7" height="17.5" fill="#ffffff" fill-opacity="0.92"/>
+<text x="1185" y="1092.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="normal" text-anchor="middle" fill="#1f2937">metrics, reports</text>
+<rect x="1138.5" y="1120.5" width="93.1" height="17.5" fill="#ffffff" fill-opacity="0.92"/>
+<text x="1185" y="1132.0" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="normal" text-anchor="middle" fill="#1f2937">filters, export</text>
+</svg>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Preflight Settings</title>
+  <link rel="stylesheet" href="theme.css" />
+  <style>
+    main { max-width: 600px; margin: 0 auto; padding: 40px 16px 56px; }
+    .page-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 4px; }
+    .page-head h1 { font-size: 26px; font-weight: 600; letter-spacing: -0.01em; }
+    .lede { margin-bottom: 28px; color: rgb(var(--secondary)); }
+    form { display: grid; gap: 28px; }
+    .group-title { margin: 0 0 8px 4px; font-size: 13px; font-weight: 600; color: rgb(var(--secondary)); }
+    .group { overflow: hidden; }
+    .row { display: grid; gap: 6px; padding: 14px 16px; }
+    .row + .row { border-top: 1px solid rgb(var(--separator) / 0.6); }
+    .row label { font-size: 13px; font-weight: 500; }
+    .hint { font-size: 12px; color: rgb(var(--secondary)); }
+    .row-inline { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .connection { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+    #status { font-size: 13px; color: rgb(var(--secondary)); }
+    #status.ok { color: rgb(var(--cleared)); }
+    #status.error { color: rgb(var(--risk)); }
+    .footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .footer .note { font-size: 12px; color: rgb(var(--secondary)); }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="page-head">
+      <span class="eyebrow">Preflight</span>
+      <h1>Settings</h1>
+    </div>
+    <p class="lede">Stored only in this browser profile.</p>
+
+    <form id="settings-form">
+      <section aria-labelledby="backend-title">
+        <h2 id="backend-title" class="group-title">Backend</h2>
+        <div class="panel group">
+          <div class="row">
+            <label for="api-base-url">Backend URL</label>
+            <input id="api-base-url" class="field" type="url" required placeholder="http://localhost:8000" />
+            <span class="hint">Where the machine-learning check and the activity log run.</span>
+          </div>
+          <div class="row">
+            <label for="api-token">API token</label>
+            <input id="api-token" class="field" type="password" autocomplete="off" />
+            <span class="hint">Issued for your organisation by whoever runs the backend. Without it, only the built-in rule checks run and nothing is logged centrally.</span>
+          </div>
+          <div class="row">
+            <div class="connection">
+              <button id="test-connection" class="btn" type="button">Test Connection</button>
+              <p id="status" role="status"></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="detection-title">
+        <h2 id="detection-title" class="group-title">Detection</h2>
+        <div class="panel group">
+          <div class="row row-inline">
+            <div>
+              <label for="enable-layer2">Machine-learning check</label>
+              <p class="hint">When a prompt passes the rule checks, ask the backend whether it reads like a contract, financial report or other internal document.</p>
+            </div>
+            <input id="enable-layer2" class="switch" type="checkbox" role="switch" />
+          </div>
+          <div class="row">
+            <label for="company-keywords">Company terms</label>
+            <textarea id="company-keywords" class="field" placeholder="Project Falcon&#10;Acme Corp"></textarea>
+            <span class="hint">One per line — project codenames, client names, internal terms. Prompts that mention them get a warning.</span>
+          </div>
+        </div>
+      </section>
+
+      <div class="footer">
+        <span class="note">Changes apply to new prompts right away.</span>
+        <button class="btn btn-primary" type="submit">Save Changes</button>
+      </div>
+    </form>
+  </main>
+  <script src="options.js"></script>
+</body>
+</html>

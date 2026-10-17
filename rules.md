@@ -1,0 +1,46 @@
+# Preflight.ai — Engineering Rules
+
+These are binding constraints for anyone (human or AI) writing code in this repo. Where a rule conflicts with something faster/easier, the rule wins unless a human explicitly overrides it for a specific, named reason.
+
+## 1. Non-negotiable invariants
+
+1. **Never persist or transmit raw prompt or file content.** Telemetry may carry: length, a short truncated preview (current cap: 80 chars — even this is under audit scrutiny, see `PRODUCT_AUDIT.md`), finding *types* and risk levels, counts. It may **never** carry: the matched value, the full text, file names paired with content, or anything that could reconstruct the original sensitive data. If you're about to add a field to a telemetry payload, ask: "could this field alone or combined with others leak what the DLP tool exists to prevent leaking?" If yes, don't add it.
+2. **Fail open, not closed.** Every detection/backend call on the send-interception path must have a bounded timeout and a fallback that lets the send through. A DLP tool that breaks an employee's ability to use their AI tool when the backend is down will get uninstalled, not fixed. Never add a code path where backend unavailability blocks a send indefinitely.
+3. **`preventDefault()` / `stopImmediatePropagation()` must be synchronous, before any `await`.** This is a documented past bug (async race condition — see `content.js` comments). Any new interception logic must call these guards in the same synchronous tick as the triggering event, before doing any async work.
+4. **Attach DOM listeners at `document` level with capture, not to specific elements found at load time.** ChatGPT/Claude/Gemini are React/SPA UIs that replace composer DOM nodes between page load and send. Use `event.target.closest(selector)` / `event.composedPath()` + `.matches()`, not a cached element reference. This was a fixed past bug (stale DOM node references) — don't reintroduce it.
+5. **Reuse the existing pipeline; don't fork it.** New input sources (documents, images, future paste-type detection, etc.) must feed into the *same* `SentinelDetectors.scan()` → Layer 2 classify → warning overlay → `logEvent()` path. Do not build a parallel scan/warning/logging path for a new feature. If the existing pipeline can't express what you need, extend its inputs/outputs — don't duplicate it.
+6. **Content scripts never call the backend directly.** All network egress to the Layer 2 API or telemetry endpoint goes through `background.js`. This keeps host permissions minimal on the AI-site content scripts and centralizes retry/queueing logic in one place.
+
+## 2. What to use
+
+- **Vanilla JS for the extension.** No framework, no bundler, no TypeScript for `src/`. The extension has no build step today — keep it that way unless a human explicitly decides to introduce one (this is a real tradeoff: it makes onboarding vendored libraries clumsier, but it means "load unpacked" always works with zero setup).
+- **Vendored, pinned third-party libraries for document parsing** (`src/vendor/`), loaded as regular content scripts declared in `manifest.json`. Do not fetch parsing libraries from a CDN at runtime — vendoring keeps the extension fully offline-capable and avoids a remote-code-execution surface inside a security product.
+- **FastAPI + Pydantic v2 for backend endpoints.** Keep request/response shapes as explicit Pydantic models, not raw dicts — the correctness properties in `.kiro/specs/preflight-layer2-backend/requirements.md` depend on validated shapes.
+- **scikit-learn + spaCy for Layer 2**, matching the pinned versions in `backend/requirements.txt`. Don't casually bump major versions — the trained `.joblib` artifact is version-coupled to the scikit-learn version that produced it.
+- **Raw `sqlite3` for now**, until the Postgres migration (`Phases.md` / `MASTER_ROADMAP.md` M7) happens. Don't introduce a second, competing storage mechanism in the meantime.
+- **EARS-style requirements + a design doc** for any new backend surface, following the pattern already established in `.kiro/specs/preflight-layer2-backend/`. Write requirements.md → design.md → implementation, in that order, for anything touching the detection pipeline or its API contract.
+
+## 3. What to avoid
+
+- **Do not add authentication-shaped code that isn't real authentication.** `auth.py`'s in-memory 3-token map is an explicitly acknowledged pilot placeholder, not a pattern to extend. Don't add more hardcoded tokens to it; if you need auth on a new endpoint, that's a signal the real-auth milestone (M4) is now blocking you — surface that rather than papering over it.
+- **Do not leave `CORS allow_origins=["*"]` unaddressed while adding new endpoints.** Every new backend endpoint inherits this until it's fixed. Don't treat wide-open CORS as acceptable just because it's already there — flag it every time you touch `main.py`.
+- **Do not add dead code that "will be wired up later."** This repo already has real examples (`BUSINESS_LAYER2_TYPES` unused, `AWS_SECRET_REGEX` and the Verhoeff checksum defined but never called, `authToken`-gated paths nothing sets). If a function isn't called by anything, either call it or delete it — don't leave a third state.
+- **Do not introduce a second product/brand name.** The codebase still has "SentinelAI"/"SentinelDetectors"/`sentinel-flush-queue` internals left over from a prior codename, alongside "Preflight.ai" in user-facing surfaces. Don't add more of either — new code should use `Preflight`-prefixed names, and a rename pass is tracked separately (don't do a drive-by rename inside an unrelated feature PR; it makes review harder).
+- **Do not build detection logic that only works for one language/script.** The current classifier and regexes are English + Indian-numeric-format specific; know this limitation, don't quietly assume it's general-purpose when extending it.
+- **Do not silently swallow errors in the interception path.** A `try/catch` that hides a real failure from `console.warn`/`console.error` makes future debugging (like the `decision`/`action_taken` null bug) much harder to trace. Log with the `[Preflight]` prefix already used throughout, even for expected fallback paths.
+- **Do not couple a paid feature's existence to a flag with no implementation behind it**, the way `layer3_would_trigger` currently is. If you add a new capability flag to an API response, either the capability exists or the flag is clearly documented as forward-looking and never surfaced as if it works.
+
+## 4. Error handling boundaries
+
+- **Client-side (extension):** every fallible operation on the send-interception critical path (file extraction, Layer 1 scan, Layer 2 classify, telemetry send) must resolve to a decision, never throw uncaught into the event handler. Wrap in `try/catch`, log with `console.warn`/`console.error`, and default to the fail-open behavior in Rule 2.
+- **Server-side (backend):** the global exception handler in `main.py` must keep returning a generic message to the client (`"Internal classification error."`) while logging the full stack trace server-side only. Never let an exception leak internal details (file paths, stack traces, model internals) to the extension or a browser DevTools console.
+- **NER extraction must never raise.** Any change to `models/ner_model.py` must preserve the "never raises, always returns a result with a `ner_backend` field describing what actually served the request" contract.
+- **Classifier load failure is intentionally fail-fast at startup**, not fail-soft per request. Don't change `text_classifier.py` to silently serve un-loaded/garbage predictions if the joblib file is missing — the current "refuse to start the whole app" behavior is correct and should stay.
+
+## 5. Boundaries for AI-assisted work in this repo
+
+- **Read `PRODUCT_AUDIT.md` and `MASTER_ROADMAP.md` before touching privacy-sensitive code paths** (telemetry, storage, auth, CORS). Both documents already contain a prioritized, human-reviewed assessment of what's wrong — don't re-discover known issues and treat them as novel, and don't "fix" something in a way that contradicts the documented priority order without flagging it.
+- **Smallest working change, integrated into the existing pipeline, over a rewrite.** This has been stated explicitly by the project owner more than once — default to it even when not restated.
+- **Never claim a fix is verified without an actual test.** If you can't run the Chrome extension in a real browser session, say so explicitly rather than asserting "this works." Ask the user to check `console.log("[Preflight] ...")` output and report back, as the concrete verification step, rather than presenting untested code as done.
+- **Don't over-claim regulatory/compliance language.** DPDP framing is a positioning choice (see `PRD.md` §7.2). AI-assisted copy (docs, UI strings, marketing text) must not assert a legal mandate that doesn't exist in the current DPDP rules text.
+- **Don't silently rename, refactor, or "clean up" adjacent code while implementing a requested feature.** If you notice something worth fixing (dead code, a naming inconsistency, a security gap) while working on something else, flag it — don't fix it inline unless asked.

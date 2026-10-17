@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Design tokens (RGB channels so Tailwind opacity modifiers work).
+ * By default the page follows the system appearance. The header's
+ * Appearance control can pin it: <html data-theme="light|dark">.
+ * (The popup and Settings page always follow the system.)
+ *
+ * Contrast on surface (light / dark):
+ *   label 16.8 / 15.6   secondary 5.1 / 6.6   cleared 5.5 / 9.1
+ *   risk 5.8 / 6.1      high 5.0 / 8.9        medium 5.1 / 12.1
+ * tertiary (3.6 in light) is for non-text marks only.
+ *
+ * One color, one meaning: cleared = sensitive data kept in the browser,
+ * risk = critical severity or sent despite a warning. Controls stay neutral.
+ */
+:root {
+  color-scheme: light;
+  --page: 245 245 247;
+  --surface: 255 255 255;
+  --fill: 232 232 237;
+  --label: 29 29 31;
+  --secondary: 110 110 115;
+  --tertiary: 134 134 139;
+  --separator: 210 210 215;
+  --chart-neutral: 199 199 204;
+  --cleared: 15 118 110;
+  --risk: 201 24 43;
+  --high: 180 83 9;
+  --medium: 138 106 0;
+  --focus: 0 113 227;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.04), 0 1px 1px rgb(0 0 0 / 0.03);
+}
+
+/* Dark: the system asks for it and the page isn't pinned to light… */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --page: 0 0 0;
+    --surface: 28 28 30;
+    --fill: 44 44 46;
+    --label: 245 245 247;
+    --secondary: 161 161 166;
+    --tertiary: 142 142 147;
+    --separator: 56 56 58;
+    --chart-neutral: 72 72 74;
+    --cleared: 45 212 191;
+    --risk: 255 107 107;
+    --high: 255 169 77;
+    --medium: 255 214 10;
+    --focus: 64 156 255;
+    --shadow: none;
+  }
+}
+
+/* …or the page is pinned to dark. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: 0 0 0;
+  --surface: 28 28 30;
+  --fill: 44 44 46;
+  --label: 245 245 247;
+  --secondary: 161 161 166;
+  --tertiary: 142 142 147;
+  --separator: 56 56 58;
+  --chart-neutral: 72 72 74;
+  --cleared: 45 212 191;
+  --risk: 255 107 107;
+  --high: 255 169 77;
+  --medium: 255 214 10;
+  --focus: 64 156 255;
+  --shadow: none;
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --secondary: 72 72 74;
+    --separator: 142 142 147;
+  }
+  :root[data-theme="dark"] {
+    --secondary: 210 210 215;
+    --separator: 99 99 102;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --secondary: 210 210 215;
+      --separator: 99 99 102;
+    }
+  }
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: rgb(var(--page));
+  color: rgb(var(--label));
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button,
+input,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid rgb(var(--focus) / 0.6);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+@layer components {
+  .panel {
+    @apply rounded-xl border border-separator/70 bg-surface;
+    box-shadow: var(--shadow);
+  }
+
+  .section-title {
+    @apply text-[17px] font-semibold leading-snug text-label;
+  }
+
+  .field {
+    @apply h-8 rounded-lg border border-separator bg-surface px-2.5 text-[13px] text-label;
+  }
+
+  .btn {
+    @apply inline-flex h-8 items-center gap-1.5 rounded-lg border border-separator bg-surface px-3 text-[13px] font-medium text-label transition-colors hover:bg-fill disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

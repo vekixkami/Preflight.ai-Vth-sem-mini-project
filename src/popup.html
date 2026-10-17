@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Preflight</title>
+  <link rel="stylesheet" href="theme.css" />
+  <style>
+    body { width: 360px; }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 16px 12px;
+    }
+    header .names { display: flex; align-items: baseline; gap: 8px; }
+    .icon-btn {
+      display: inline-grid;
+      place-items: center;
+      width: 28px;
+      height: 28px;
+      border: 0;
+      border-radius: 8px;
+      background: none;
+      color: rgb(var(--secondary));
+      cursor: pointer;
+    }
+    .icon-btn:hover { background: rgb(var(--fill)); color: rgb(var(--label)); }
+    main { display: grid; gap: 12px; padding: 0 12px 12px; }
+    .summary { padding: 14px; }
+    .headline { font-size: 17px; font-weight: 600; line-height: 1.35; letter-spacing: -0.01em; }
+    .legend { display: flex; flex-wrap: wrap; gap: 4px 14px; margin-top: 8px; font-size: 12px; color: rgb(var(--secondary)); }
+    .legend span { display: inline-flex; align-items: center; gap: 6px; }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid rgb(var(--separator) / 0.7);
+    }
+    .stats dt { font-size: 12px; color: rgb(var(--secondary)); }
+    .stats dd { font-size: 20px; font-weight: 600; }
+    .recent { overflow: hidden; }
+    .recent h2 { padding: 12px 14px 6px; }
+    .event {
+      display: grid;
+      gap: 2px;
+      padding: 9px 14px;
+      border-top: 1px solid rgb(var(--separator) / 0.5);
+    }
+    .event .row { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; }
+    .event .what { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .event .outcome { flex: none; font-weight: 500; }
+    .event .meta { display: flex; align-items: center; gap: 6px; font-size: 12px; color: rgb(var(--secondary)); }
+    .empty { padding: 4px 14px 14px; font-size: 13px; color: rgb(var(--secondary)); }
+    .actions { display: flex; gap: 8px; }
+    .actions .btn-primary { flex: 1; }
+    .export { position: relative; }
+    .export .menu { right: 0; bottom: 38px; }
+    .note { padding: 0 4px; font-size: 12px; color: rgb(var(--secondary)); }
+    .sync { display: flex; align-items: flex-start; gap: 8px; padding: 10px 14px; font-size: 13px; }
+    .sync .dot { margin-top: 6px; }
+    .sync button { padding: 0; border: 0; background: none; color: rgb(var(--focus)); font-size: 13px; cursor: pointer; }
+    .sync button:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="names">
+      <span class="eyebrow">Preflight</span>
+      <h1 class="title">Clearance</h1>
+    </div>
+    <button id="open-options" class="icon-btn" type="button" aria-label="Settings" title="Settings">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/></svg>
+    </button>
+  </header>
+
+  <main>
+    <section class="panel summary" aria-labelledby="headline">
+      <h2 id="headline" class="headline">No warnings yet in this browser.</h2>
+      <div id="clearance" hidden>
+        <div class="meter" style="margin-top: 12px" role="img" id="clearance-meter">
+          <div id="meter-cleared" class="bg-cleared"></div>
+          <div id="meter-risk" class="bg-risk"></div>
+        </div>
+        <div class="legend">
+          <span><i class="dot bg-cleared" aria-hidden="true"></i><span id="legend-cleared"></span></span>
+          <span><i class="dot bg-risk" aria-hidden="true"></i><span id="legend-risk"></span></span>
+        </div>
+      </div>
+      <dl class="stats">
+        <div><dt>Scanned</dt><dd id="total-scans" class="tabular">0</dd></div>
+        <div><dt>Items found</dt><dd id="found-count" class="tabular">0</dd></div>
+        <div><dt>Sent anyway</dt><dd id="sent-count" class="tabular">0</dd></div>
+      </dl>
+    </section>
+
+    <section class="panel recent" aria-labelledby="recent-title">
+      <h2 id="recent-title" class="section-title">Recent</h2>
+      <ul id="events"></ul>
+      <p id="empty-state" class="empty" hidden>Prompts you send on ChatGPT, Claude, Gemini, Copilot or Perplexity will appear here.</p>
+    </section>
+
+    <div id="sync-status" class="panel sync" role="status" hidden>
+      <i id="sync-dot" class="dot" aria-hidden="true"></i>
+      <span><span id="sync-text"></span> <button id="sync-action" type="button" hidden></button></span>
+    </div>
+
+    <div class="actions">
+      <button id="open-dashboard" class="btn btn-primary" type="button">Open Dashboard</button>
+      <div class="export">
+        <button id="export-toggle" class="btn" type="button" aria-haspopup="menu" aria-expanded="false">Export</button>
+        <div id="export-menu" class="menu" role="menu" hidden>
+          <button id="export-csv" role="menuitem" type="button">Export as CSV</button>
+          <button id="export-json" role="menuitem" type="button">Export as JSON</button>
+        </div>
+      </div>
+    </div>
+    <p class="note">Prompt text is never stored — only what was detected and what you chose.</p>
+  </main>
+
+  <script src="popup.js"></script>
+</body>
+</html>
